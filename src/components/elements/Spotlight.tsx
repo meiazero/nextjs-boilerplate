@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils.js";
 import type { LucideProps } from "lucide-react";
 
 export const Spotlight = ({ className, ...props }: LucideProps) => {

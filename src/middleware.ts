@@ -1,4 +1,4 @@
-export { auth as middleware } from "@/lib/auth/config";
+export { auth as middleware } from "@/lib/auth/config.js";
 
 export const runtime = "nodejs";
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#runtime

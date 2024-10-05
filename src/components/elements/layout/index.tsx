@@ -1,2 +1,2 @@
-export { Header } from "./Header";
-export { NavBar } from "./NavBar";
+export { Header } from "./Header.jsx";
+export { NavBar } from "./NavBar.jsx";
