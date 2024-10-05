@@ -1,4 +1,5 @@
 import { Spotlight } from "@/components/elements/Spotlight";
+import type { Metadata } from "next";
 import React from "react";
 
 /**
@@ -8,6 +9,18 @@ import React from "react";
  * https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
  */
 export const dynamic = "force-static";
+
+/**
+ * Generate the metadata with dynamic information.
+ *
+ * Read more about the Dynamic Metadata here:
+ * https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function
+ */
+export function generateMetadata(): Metadata {
+  return {
+    title: "Home",
+  };
+}
 
 export default function HomePage() {
   return (
