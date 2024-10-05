@@ -9,7 +9,7 @@
     "start": "next start",
     "check": "biome check",
     "typecheck": "tsc",
-    "postinstall": "prisma generate"
+    "generate": "prisma generate"
   },
   "dependencies": {
     "@auth/prisma-adapter": "2.5.3",
