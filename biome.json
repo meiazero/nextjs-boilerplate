@@ -6,7 +6,7 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": [".next"],
+    "ignore": [".next", "node_modules"],
     "rules": {
       "recommended": true
     }
