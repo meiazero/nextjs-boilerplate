@@ -1,5 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { createJiti } from "jiti";
+import { ENABLE_STATIC_EXPORT } from "./next.constants.mjs";
 
 const jiti = createJiti(fileURLToPath(import.meta.url));
 
@@ -34,6 +35,9 @@ const nextConfig = {
     // @see https://vercel.com/blog/how-we-optimized-package-imports-in-next-js
     optimizePackageImports: ["tailwindcss"],
   },
+
+  // On static export builds we want to enable the export feature
+  output: ENABLE_STATIC_EXPORT ? "export" : "standalone",
 };
 
 export default nextConfig;
