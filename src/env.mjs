@@ -30,6 +30,7 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_BASE_URL: z.string().default("http://localhost:3000"),
     NEXT_PUBLIC_VERCEL_REVALIDATE_TIME: z.string().transform((v) => Number(v)),
+    NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: z.string().min(1),
     NEXT_PUBLIC_STATIC_EXPORT: z.string(),
   },
   /**
@@ -42,6 +43,8 @@ export const env = createEnv({
     NEXT_PUBLIC_VERCEL_REVALIDATE_TIME:
       process.env.NEXT_PUBLIC_VERCEL_REVALIDATE_TIME,
     NEXT_PUBLIC_STATIC_EXPORT: process.env.NEXT_PUBLIC_STATIC_EXPORT,
+    NEXT_PUBLIC_GOOGLE_ANALYTICS_ID:
+      process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID,
     AUTH_SECRET: process.env.AUTH_SECRET,
     AUTH_GOOGLE_ID: process.env.AUTH_GOOGLE_ID,
     AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
