@@ -1,4 +1,4 @@
-import { Spotlight } from "@/components/elements/Spotlight.jsx";
+import { Spotlight } from "@/components/elements/Spotlight";
 import React from "react";
 
 /**

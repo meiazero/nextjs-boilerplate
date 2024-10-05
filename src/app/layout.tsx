@@ -4,7 +4,7 @@ import type { PropsWithChildren } from "react";
 
 import "@/styles/globals.css";
 import { Header } from "@/components/elements/layout";
-import { cn } from "@/lib/utils.js";
+import { cn } from "@/lib/utils";
 import { Providers } from "@/providers";
 
 const font = Font({

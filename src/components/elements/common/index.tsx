@@ -1,3 +1,3 @@
-export { ActiveLink } from "./ActiveLink.jsx";
-export { NavItem } from "./NavItem.jsx";
-export { ThemeToggle } from "./ThemeToggle.jsx";
+export { ActiveLink } from "./ActiveLink";
+export { NavItem } from "./NavItem";
+export { ThemeToggle } from "./ThemeToggle";

@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils.js";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ComponentProps } from "react";

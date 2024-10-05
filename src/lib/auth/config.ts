@@ -1,14 +1,14 @@
 import { env } from "@/env.mjs";
-import { prisma } from "@/lib/prisma.js";
+import { prisma } from "@/lib/prisma";
 import { AUTH_TRUST_HOST } from "../../../next.constants.mjs";
-import { githubProvider } from "./providers/github.js";
-import { googleProvider } from "./providers/google.js";
+import { githubProvider } from "./providers/github";
+import { googleProvider } from "./providers/google";
 import {
   DEFAULT_REDIRECT_PAGE,
   apiAuthPrefix,
   authRoutes,
   publicRoutes,
-} from "./routes.js";
+} from "./routes";
 
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import type { NextAuthConfig } from "next-auth";
