@@ -1,18 +1,21 @@
 import { env } from "@/env.mjs";
+import { prisma } from "@/lib/prisma.js";
 import { AUTH_TRUST_HOST } from "../../../next.constants.mjs";
-import { githubProvider } from "./providers/github";
-import { googleProvider } from "./providers/google";
-
-import type { NextAuthConfig } from "next-auth";
-import NextAuth from "next-auth";
+import { githubProvider } from "./providers/github.js";
+import { googleProvider } from "./providers/google.js";
 import {
   DEFAULT_REDIRECT_PAGE,
   apiAuthPrefix,
   authRoutes,
   publicRoutes,
-} from "./routes";
+} from "./routes.js";
+
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import type { NextAuthConfig } from "next-auth";
+import NextAuth from "next-auth";
 
 export const nextAuthConfig = {
+  adapter: PrismaAdapter(prisma),
   providers: [googleProvider, githubProvider],
 
   secret: env.AUTH_SECRET,
