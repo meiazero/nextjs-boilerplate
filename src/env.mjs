@@ -1,3 +1,5 @@
+// @ts-check
+
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
@@ -30,8 +32,8 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_BASE_URL: z.string().default("http://localhost:3000"),
     NEXT_PUBLIC_VERCEL_REVALIDATE_TIME: z.string().transform((v) => Number(v)),
-    NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: z.string().min(1),
-    NEXT_PUBLIC_STATIC_EXPORT: z.string(),
+    NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: z.string().optional(),
+    NEXT_PUBLIC_STATIC_EXPORT: z.string().transform((v) => Boolean(v)),
   },
   /**
    * Destructure all variables from `process.env` to make sure they aren't tree-shaken away.

@@ -6,7 +6,7 @@ const config: Config = {
   darkMode: ["class"],
   theme: {
     container: {
-      center: "true" as unknown as boolean,
+      center: true,
       padding: "2rem",
       screens: {
         "2xl": "1400px",
@@ -95,7 +95,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [tailwindAnimate, require("tailwindcss-animate")],
+  plugins: [tailwindAnimate],
 };
 
 export default config;

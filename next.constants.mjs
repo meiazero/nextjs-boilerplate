@@ -1,3 +1,5 @@
+// @ts-check
+
 import { env } from "./src/env.mjs";
 
 /**
@@ -13,7 +15,4 @@ export const VERCEL_REVALIDATE = Number(
 
 export const AUTH_TRUST_HOST = !!env.VERCEL_ENV;
 
-export const ENABLE_STATIC_EXPORT =
-  env.NEXT_PUBLIC_STATIC_EXPORT === "true" ||
-  // @ts-ignore
-  env.NEXT_PUBLIC_STATIC_EXPORT === true;
+export const ENABLE_STATIC_EXPORT = env.NEXT_PUBLIC_STATIC_EXPORT;

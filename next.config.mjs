@@ -1,3 +1,5 @@
+// @ts-check
+
 import { fileURLToPath } from "node:url";
 import { createJiti } from "jiti";
 import { ENABLE_STATIC_EXPORT } from "./next.constants.mjs";
@@ -37,7 +39,7 @@ const nextConfig = {
   },
 
   // On static export builds we want to enable the export feature
-  output: ENABLE_STATIC_EXPORT ? "export" : "standalone",
+  output: ENABLE_STATIC_EXPORT ? undefined : "standalone",
 };
 
 export default nextConfig;
