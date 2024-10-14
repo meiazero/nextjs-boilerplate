@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Inter as Font } from "next/font/google";
 import type { PropsWithChildren } from "react";
 
-import "@/styles/globals.css";
-import { Header } from "@/components/elements/layout";
+import { Header } from "@/components/elements/layout/Header";
 import { cn } from "@/lib/utils";
 import { Providers } from "@/providers";
+
+import "@/styles/globals.css";
 
 const font = Font({
   subsets: ["latin"],

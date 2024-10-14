@@ -1,7 +1,15 @@
 "use client";
 
-import { NavBar } from "@/components/elements/layout";
+import {
+  HeaderNav,
+  HeaderRoot,
+  HeaderSide,
+} from "@/components/elements/common/Header";
+import { NavItem } from "@/components/elements/common/NavItem";
+import { ThemeToggle } from "@/components/elements/common/ThemeToggle";
+import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 import React from "react";
 
 export function Header() {
@@ -11,8 +19,36 @@ export function Header() {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
 
   return (
-    <header className="h-16 w-full border-b border-border/40 bg-background/95">
-      <NavBar onThemeTogglerClick={toggleCurrentTheme} />
-    </header>
+    <HeaderRoot>
+      <HeaderNav>
+        <HeaderSide className="gap-8">
+          <Link href="/">
+            <h1 className="text-2xl font-bold">Boilerplate</h1>
+          </Link>
+
+          <ul className="md:flex flex-row gap-4 hidden">
+            {[
+              {
+                text: "Home",
+                href: "/home",
+                target: undefined,
+              },
+            ].map((link) => (
+              <li key={link.href}>
+                <NavItem key={link.href} href={link.href} target={link.target}>
+                  {link.text}
+                </NavItem>
+              </li>
+            ))}
+          </ul>
+        </HeaderSide>
+        <HeaderSide>
+          <ThemeToggle onClick={toggleCurrentTheme} />
+          <Button asChild>
+            <Link href="/sign-in">Entrar</Link>
+          </Button>
+        </HeaderSide>
+      </HeaderNav>
+    </HeaderRoot>
   );
 }

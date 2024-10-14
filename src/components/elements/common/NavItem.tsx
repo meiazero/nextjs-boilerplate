@@ -1,4 +1,4 @@
-import { ActiveLink } from "@/components/elements/common";
+import { ActiveLink } from "@/components/elements/common/ActiveLink";
 import { cn } from "@/lib/utils";
 import { ArrowUpRightIcon } from "lucide-react";
 import type { HTMLAttributeAnchorTarget, PropsWithChildren } from "react";
