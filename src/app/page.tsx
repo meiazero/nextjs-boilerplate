@@ -1,4 +1,5 @@
 import { Spotlight } from "@/components/elements/Spotlight";
+import { TestSubmitButton } from "@/components/elements/TestSubmitButton";
 import type { Metadata } from "next";
 import React from "react";
 
@@ -36,6 +37,7 @@ export default function HomePage() {
             and shadcn-ui.
           </p>
         </div>
+        <TestSubmitButton />
       </section>
     </React.Fragment>
   );
