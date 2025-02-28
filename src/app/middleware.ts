@@ -1,7 +1,17 @@
-export { auth as middleware } from "@/lib/auth/config";
+import { type NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#runtime
+
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  console.log("middleware from: ", pathname);
+
+  const response = NextResponse.next();
+
+  return response;
+}
 
 export const config = {
   matcher: [

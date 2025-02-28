@@ -1,13 +1,11 @@
-import { Spotlight } from "@/components/elements/Spotlight";
-import { TestSubmitButton } from "@/components/elements/TestSubmitButton";
 import type { Metadata } from "next";
-import React from "react";
 
 /**
  * Force the page to be static and only change with a new build.
  *
  * read more about the Route Segment Config here:
  * https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
+ * 'auto' | 'error' | 'force-static' | 'force-dynamic'
  */
 export const dynamic = "force-static";
 
@@ -25,20 +23,16 @@ export function generateMetadata(): Metadata {
 
 export default function HomePage() {
   return (
-    <React.Fragment>
-      <Spotlight className="-top-0 left-0 md:left-20 md:-top-20 text-foreground" />
-      <section className="flex flex-col min-h-[calc(100vh-4rem)] w-full items-center justify-center gap-y-8">
-        <div className="container flex flex-col justify-center space-y-8 text-center">
-          <h1 className="text-5xl font-extrabold tracking-tighter text-pretty md:text-7xl">
-            Next.js Boilerplate
-          </h1>
-          <p className="mx-auto max-w-[550px] text-muted-foreground text-lg md:text-xl text-pretty">
-            This boilerplate have installed: Next.js, Typescript, Tailwind CSS,
-            and shadcn-ui.
-          </p>
-        </div>
-        <TestSubmitButton />
+    <main className="flex h-screen flex-col items-center justify-center gap-y-8">
+      <section className="flex flex-col justify-center space-y-8 text-center">
+        <h1 className="text-5xl font-extrabold tracking-tighter text-pretty md:text-7xl">
+          Welcome to Next.js Boilerplate
+        </h1>
+        <p className="text-muted-foreground mx-auto max-w-sm text-lg text-pretty md:text-xl">
+          This is a Next.js Boilerplate template that helps you get started with
+          Next.js and Tailwind CSS.
+        </p>
       </section>
-    </React.Fragment>
+    </main>
   );
 }

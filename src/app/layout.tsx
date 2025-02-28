@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import { Inter as Font } from "next/font/google";
+import { Manrope as Font } from "next/font/google";
 import type { PropsWithChildren } from "react";
 
-import { Header } from "@/components/elements/layout/Header";
 import { cn } from "@/lib/utils";
-import { Providers } from "@/providers";
-
 import "@/styles/globals.css";
 
 const font = Font({
@@ -30,12 +27,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <body
-        className={cn("min-h-screen bg-background antialiased", font.className)}
+        className={cn("bg-background min-h-screen antialiased", font.className)}
       >
-        <Providers>
-          <Header />
-          {children}
-        </Providers>
+        {children}
       </body>
     </html>
   );

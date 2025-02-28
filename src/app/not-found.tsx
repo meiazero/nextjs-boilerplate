@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import React from "react";
 
 /**
  * Force the page to be static and only change with a new build.
@@ -17,19 +16,19 @@ export const dynamic = "force-static";
  */
 export function generateMetadata(): Metadata {
   return {
-    title: "Página não encontrada",
+    title: "Page not found",
   };
 }
 
 export default function NotFoundPage() {
   return (
-    <main className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center gap-y-8">
+    <main className="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center gap-y-8">
       <section className="container flex flex-col justify-center space-y-8 text-center">
         <h1 className="text-5xl font-extrabold tracking-tighter text-pretty md:text-7xl">
-          404 - Página não encontrada
+          404 - Page not found
         </h1>
-        <p className="mx-auto max-w-sm text-muted-foreground text-lg md:text-xl text-pretty">
-          Desculpe, mas a página que você está procurando não existe.
+        <p className="text-muted-foreground mx-auto max-w-sm text-lg text-pretty md:text-xl">
+          Sorry, we couldn&apos;t find the page you&apos;re looking for.
         </p>
       </section>
     </main>

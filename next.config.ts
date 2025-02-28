@@ -1,21 +1,17 @@
-// @ts-check
+import type { NextConfig } from "next";
 
-import { fileURLToPath } from "node:url";
 import { createJiti } from "jiti";
+import { fileURLToPath } from "node:url";
+
 import { ENABLE_STATIC_EXPORT } from "./next.constants.mjs";
 
 const jiti = createJiti(fileURLToPath(import.meta.url));
 
-await jiti.import("./src/env.mjs");
+jiti.import("./src/env.mjs");
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   // Just to ensure that React is always on strict mode
   reactStrictMode: true,
-
-  // We want to always enforce that SWC minifies the sources even during Development mode
-  // so that bundles are minified on-the-go. SWF minifying is fast, and has almost no penalties
-  swcMinify: true,
 
   // We don't use trailing slashes on URLs from the Node.js Website
   trailingSlash: false,
@@ -38,8 +34,17 @@ const nextConfig = {
     optimizePackageImports: ["tailwindcss"],
   },
 
+  transpilePackages: ["@t3-oss/env-nextjs"],
+
   // On static export builds we want to enable the export feature
-  output: ENABLE_STATIC_EXPORT ? undefined : "standalone",
+  output: ENABLE_STATIC_EXPORT ? "export" : "standalone",
+
+  logging: {
+    incomingRequests: true,
+    fetches: {
+      fullUrl: true,
+    },
+  },
 };
 
 export default nextConfig;

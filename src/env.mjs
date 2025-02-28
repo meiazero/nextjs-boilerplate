@@ -1,5 +1,4 @@
 // @ts-check
-
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
@@ -12,13 +11,17 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "production", "test"])
       .default("development"),
-    AUTH_SECRET: z.string().min(1),
-    AUTH_GOOGLE_ID: z.string().min(1),
-    AUTH_GOOGLE_SECRET: z.string().min(1),
-    AUTH_GITHUB_ID: z.string().min(1),
-    AUTH_GITHUB_SECRET: z.string().min(1),
-    DATABASE_URL: z.string().min(1),
-    AUTH_REDIRECT_PROXY_URL: z.string().url(),
+    /**
+     * This is used for defining a default time of when `next-data` and other dynamically generated
+     * but static-enabled pages should be regenerated.
+     *
+     * Note that this is a custom Environment Variable that can be defined by us when necessary
+     * if no value is provided, it will default to 604800 (7 days)
+     *
+     * FIX: the next don't recognize
+     */
+    VERCEL_REVALIDATE_TIME: z.coerce.number().default(604800),
+    DATABASE_URL: z.string().optional(),
   },
   shared: {
     VERCEL_ENV: z
@@ -30,10 +33,9 @@ export const env = createEnv({
    * For them to be exposed to the client, prefix them with `NEXT_PUBLIC_`.
    */
   client: {
-    NEXT_PUBLIC_BASE_URL: z.string().default("http://localhost:3000"),
-    NEXT_PUBLIC_VERCEL_REVALIDATE_TIME: z.string().transform((v) => Number(v)),
+    NEXT_PUBLIC_BASE_URL: z.string().url(),
     NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: z.string().optional(),
-    NEXT_PUBLIC_STATIC_EXPORT: z.string().transform((v) => Boolean(v)),
+    NEXT_PUBLIC_STATIC_EXPORT: z.string().transform(v => v === "true"),
   },
   /**
    * Destructure all variables from `process.env` to make sure they aren't tree-shaken away.
@@ -41,18 +43,29 @@ export const env = createEnv({
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     VERCEL_ENV: process.env.VERCEL_ENV,
+    VERCEL_REVALIDATE_TIME: process.env.VERCEL_REVALIDATE_TIME,
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
-    NEXT_PUBLIC_VERCEL_REVALIDATE_TIME:
-      process.env.NEXT_PUBLIC_VERCEL_REVALIDATE_TIME,
     NEXT_PUBLIC_STATIC_EXPORT: process.env.NEXT_PUBLIC_STATIC_EXPORT,
     NEXT_PUBLIC_GOOGLE_ANALYTICS_ID:
       process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID,
-    AUTH_SECRET: process.env.AUTH_SECRET,
-    AUTH_GOOGLE_ID: process.env.AUTH_GOOGLE_ID,
-    AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
-    AUTH_GITHUB_ID: process.env.AUTH_GITHUB_ID,
-    AUTH_GITHUB_SECRET: process.env.AUTH_GITHUB_SECRET,
     DATABASE_URL: process.env.DATABASE_URL,
-    AUTH_REDIRECT_PROXY_URL: process.env.AUTH_REDIRECT_PROXY_URL,
   },
+
+  /**
+   * By default, this library will feed the environment variables directly to
+   * the Zod validator.
+   *
+   * This means that if you have an empty string for a value that is supposed
+   * to be a number (e.g. `PORT=` in a ".env" file), Zod will incorrectly flag
+   * it as a type mismatch violation. Additionally, if you have an empty string
+   * for a value that is supposed to be a string with a default value (e.g.
+   * `DOMAIN=` in an ".env" file), the default value will never be applied.
+   *
+   * In order to solve these issues, we recommend that all new projects
+   * explicitly specify this option as true.
+   */
+  emptyStringAsUndefined: true,
+
+  // Tell the library when we're in a server context.
+  isServer: typeof window === "undefined",
 });
