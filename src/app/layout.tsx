@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope as Font } from "next/font/google";
+import Script from "next/script";
 import type { PropsWithChildren } from "react";
 
 import { cn } from "@/lib/utils";
@@ -26,6 +27,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
+      <Script
+        crossOrigin="anonymous"
+        src="//unpkg.com/react-scan/dist/auto.global.js"
+      />
       <body
         className={cn("bg-background min-h-screen antialiased", font.className)}
       >
