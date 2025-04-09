@@ -9,7 +9,7 @@ const jiti = createJiti(fileURLToPath(import.meta.url));
 
 jiti.import("./src/env.mjs");
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   // Just to ensure that React is always on strict mode
   reactStrictMode: true,
 
@@ -34,10 +34,13 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["tailwindcss"],
   },
 
+  // Next.js can automatically transpile and bundle dependencies from local packages
+  // (like monorepos) or from external dependencies (node_modules).
+  // @see https://nextjs.org/docs/architecture/nextjs-compiler#module-transpilation
   transpilePackages: ["@t3-oss/env-nextjs"],
 
   // On static export builds we want to enable the export feature
-  output: ENABLE_STATIC_EXPORT ? "export" : "standalone",
+  output: ENABLE_STATIC_EXPORT ? undefined : "standalone",
 
   logging: {
     incomingRequests: true,
@@ -45,6 +48,6 @@ const nextConfig: NextConfig = {
       fullUrl: true,
     },
   },
-};
+} as NextConfig;
 
 export default nextConfig;

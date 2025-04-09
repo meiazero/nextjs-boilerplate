@@ -1,7 +1,12 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "strict": true,
     "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
     "exactOptionalPropertyTypes": true,
@@ -19,7 +24,7 @@
     "forceConsistentCasingInFileNames": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
-    "target": "ES2017",
+    "target": "ES2020",
     "moduleResolution": "bundler",
     "moduleDetection": "force",
     "resolveJsonModule": true,

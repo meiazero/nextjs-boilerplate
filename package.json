@@ -8,15 +8,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ./src/**/*.{ts,tsx}"
+    "format": "prettier \"**/*.{js,mjs,ts,tsx,md,mdx,json,yml,css}\" --check --cache --cache-strategy=content --cache-location=.prettiercache --write"
   },
   "dependencies": {
-    "@t3-oss/env-nextjs": "0.12.0",
-    "jiti": "2.4.2",
-    "next": "15.2.0",
+    "@t3-oss/env-nextjs": "^0.12.0",
+    "jiti": "^2.4.2",
+    "next": "^15.2.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "zod": "3.24.2"
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",

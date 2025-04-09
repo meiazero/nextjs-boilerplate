@@ -53,8 +53,8 @@ export default async function PostPage({ params }: ItemPageProps) {
   const p = await params;
 
   return (
-    <div className="container mx-auto space-y-10 px-8 py-6">
-      <h1 className="text-4xl font-bold">Example SSG + ISR route</h1>
+    <div className='container mx-auto space-y-10 px-8 py-6'>
+      <h1 className='text-4xl font-bold'>Example SSG + ISR route</h1>
       <p>ID: {p.id}</p>
     </div>
   );

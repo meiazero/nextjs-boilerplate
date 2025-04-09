@@ -23,12 +23,12 @@ export function generateMetadata(): Metadata {
 
 export default function HomePage() {
   return (
-    <main className="flex h-screen flex-col items-center justify-center gap-y-8">
-      <section className="flex flex-col justify-center space-y-8 text-center">
-        <h1 className="text-5xl font-extrabold tracking-tighter text-pretty md:text-7xl">
+    <main className='flex h-screen flex-col items-center justify-center gap-y-8'>
+      <section className='flex flex-col justify-center space-y-8 text-center'>
+        <h1 className='text-5xl font-extrabold tracking-tighter text-pretty md:text-7xl'>
           Welcome to Next.js Boilerplate
         </h1>
-        <p className="text-muted-foreground mx-auto max-w-sm text-lg text-pretty md:text-xl">
+        <p className='text-muted-foreground mx-auto max-w-sm text-lg text-pretty md:text-xl'>
           This is a Next.js Boilerplate template that helps you get started with
           Next.js and Tailwind CSS.
         </p>

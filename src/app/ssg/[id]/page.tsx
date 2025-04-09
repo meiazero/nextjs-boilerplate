@@ -31,8 +31,8 @@ export default async function ItemPage({ params }: ItemPageProps) {
   const p = await params;
 
   return (
-    <div className="container mx-auto space-y-10 px-8 py-6">
-      <h1 className="text-4xl font-bold">
+    <div className='container mx-auto space-y-10 px-8 py-6'>
+      <h1 className='text-4xl font-bold'>
         Example dynamic route (SSG) full dynamic
       </h1>
       <p>ID: {p.id}</p>
