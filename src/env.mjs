@@ -35,10 +35,7 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_BASE_URL: z.string().url().default("http://localhost:3001"),
     NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: z.string().optional(),
-    NEXT_PUBLIC_STATIC_EXPORT: z
-      .string()
-      .transform(value => Boolean(value))
-      .default("true"),
+    NEXT_PUBLIC_STATIC_EXPORT: z.coerce.boolean().default(false),
   },
   /**
    * Destructure all variables from `process.env` to make sure they aren't tree-shaken away.
