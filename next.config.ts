@@ -3,11 +3,11 @@ import type { NextConfig } from "next";
 import { createJiti } from "jiti";
 import { fileURLToPath } from "node:url";
 
-import { ENABLE_STATIC_EXPORT } from "./next.constants.mjs";
+import { ENABLE_STATIC_EXPORT } from "./next.constants";
 
 const jiti = createJiti(fileURLToPath(import.meta.url));
 
-jiti.import("./src/env.mjs");
+jiti.import("./src/env.ts");
 
 const nextConfig = {
   // Just to ensure that React is always on strict mode
@@ -22,11 +22,6 @@ const nextConfig = {
   // We don't want to run Type Checking on Production Builds
   // as we already check it on the CI within each Pull Request
   typescript: { ignoreBuildErrors: true },
-
-  // We don't want to run ESLint Checking on Production Builds
-  // as we already check it on the CI within each Pull Request
-  // we also configure ESLint to run its lint checking on all files (next lint)
-  eslint: { dirs: ["."], ignoreDuringBuilds: true },
 
   experimental: {
     // A list of packages that Next.js should automatically evaluate and optimise the imports for.

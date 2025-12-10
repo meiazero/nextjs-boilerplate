@@ -1,4 +1,3 @@
-// @ts-check
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
@@ -33,7 +32,7 @@ export const env = createEnv({
    * For them to be exposed to the client, prefix them with `NEXT_PUBLIC_`.
    */
   client: {
-    NEXT_PUBLIC_BASE_URL: z.string().url().default("http://localhost:3001"),
+    NEXT_PUBLIC_BASE_URL: z.url().default("http://localhost:3001"),
     NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: z.string().optional(),
     NEXT_PUBLIC_STATIC_EXPORT: z.coerce.boolean().default(false),
   },
