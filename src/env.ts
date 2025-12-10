@@ -17,10 +17,13 @@ export const env = createEnv({
      * Note that this is a custom Environment Variable that can be defined by us when necessary
      * if no value is provided, it will default to 604800 (7 days)
      *
-     * FIX: the next don't recognize
+     * FIXME: the next don't recognize
      */
     VERCEL_REVALIDATE_TIME: z.coerce.number().default(604800),
-    DATABASE_URL: z.string().optional(),
+    DATABASE_URL: z
+      .string()
+      .default("postgresql://postgres:postgres@localhost:5432/postgres"),
+    REDIS_URL: z.string().default("redis://localhost:6379"),
   },
   shared: {
     VERCEL_ENV: z
@@ -48,6 +51,7 @@ export const env = createEnv({
     NEXT_PUBLIC_GOOGLE_ANALYTICS_ID:
       process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID,
     DATABASE_URL: process.env.DATABASE_URL,
+    REDIS_URL: process.env.REDIS_URL,
   },
 
   /**

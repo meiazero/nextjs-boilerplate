@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createMetadata } from "@/lib/metadata";
 
 /**
  * Force the page to be static and only change with a new build.
@@ -15,11 +15,11 @@ export const dynamic = "force-static";
  * Read more about the Dynamic Metadata here:
  * https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function
  */
-export function generateMetadata(): Metadata {
-  return {
-    title: "Home",
-  };
-}
+export const metadata = createMetadata({
+  title: "Next.js Boilerplate",
+  description:
+    "Next.js Boilerplate template that helps you get started with Next.js and Tailwind CSS.",
+});
 
 export default function HomePage() {
   return (

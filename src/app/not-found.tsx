@@ -1,12 +1,4 @@
-import type { Metadata } from "next";
-
-/**
- * Force the page to be static and only change with a new build.
- *
- * read more about the Route Segment Config here:
- * https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
- */
-export const dynamic = "force-static";
+import { createMetadata } from "@/lib/metadata";
 
 /**
  * Generate the metadata with dynamic information.
@@ -14,11 +6,10 @@ export const dynamic = "force-static";
  * Read more about the Dynamic Metadata here:
  * https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function
  */
-export function generateMetadata(): Metadata {
-  return {
-    title: "Page not found",
-  };
-}
+export const metadata = createMetadata({
+  title: "Page not found",
+  description: "Sorry, we couldn't find the page you're looking for.",
+});
 
 export default function NotFoundPage() {
   return (
